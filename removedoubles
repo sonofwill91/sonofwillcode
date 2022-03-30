@@ -1,0 +1,7 @@
+CDIR=$(pwd)
+for i in $(ls -R | grep :); do
+    DIR=${i%:}
+    cd $DIR
+    find . -name "*.bz2" | while read filename; do bzip2 -d "`dirname "$filename"`" "$filename"; done;
+    cd $CDIR
+done
